@@ -1,3 +1,4 @@
+import { ConvexClientProvider } from "@/components/Providers/ConvexProvider";
 import { ThemeProvider } from "@/components/Providers/ThemeProvider";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -32,15 +33,17 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-          storageKey="tracko-theme"
-        >
-          {children}
-        </ThemeProvider>
+        <ConvexClientProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+            storageKey="tracko-theme"
+          >
+            {children}
+          </ThemeProvider>
+        </ConvexClientProvider>
       </body>
     </html>
   );
