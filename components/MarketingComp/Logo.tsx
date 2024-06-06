@@ -10,7 +10,20 @@ const font = Salsa({
 export default function Logo() {
   return (
     <div className="hidden md:flex items-center gap-x-2">
-      <Image src="/logo.svg" alt="logo" width="20" height="20" />
+      <Image
+        src="/logo.svg"
+        alt="logo"
+        width="20"
+        height="20"
+        className="dark:hidden"
+      />
+      <Image
+        src="/logo-dark.svg"
+        alt="logo"
+        width="20"
+        height="20"
+        className="hidden dark:block"
+      />
       <p className={(cn("font-bold"), font.className)}>Tracko</p>
     </div>
   );
