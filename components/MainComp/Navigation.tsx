@@ -150,11 +150,11 @@ export default function Navigation() {
           <UserItem />
           <Item label="Search" icon={Search} isSearch onClick={() => {}} />
           <Item label="Settings" icon={Settings} onClick={() => {}} />
-          <Item onClick={handleCreateNote} label="New page" icon={PlusCircle} />
         </div>
 
         <div className="mt-4">
           <DocumentList />
+          <Item onClick={handleCreateNote} label="New page" icon={PlusCircle} />
         </div>
 
         <div
