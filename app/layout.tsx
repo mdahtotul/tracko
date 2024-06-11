@@ -1,4 +1,5 @@
 import { ConvexClientProvider } from "@/components/Providers/ConvexProvider";
+import ModalProvider from "@/components/Providers/ModalProvider";
 import { ThemeProvider } from "@/components/Providers/ThemeProvider";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -43,6 +44,7 @@ export default function RootLayout({
             storageKey="tracko-theme"
           >
             <Toaster position="bottom-center" />
+            <ModalProvider />
             {children}
           </ThemeProvider>
         </ConvexClientProvider>

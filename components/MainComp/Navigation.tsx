@@ -1,6 +1,8 @@
 "use client";
 
 import { api } from "@/convex/_generated/api";
+import { useSearch } from "@/hooks/useSearch";
+import { useSettings } from "@/hooks/useSettings";
 import { cn } from "@/lib/utils";
 import { useMutation } from "convex/react";
 import {
@@ -29,6 +31,8 @@ import UserItem from "./UserItem";
 
 export default function Navigation() {
   const pathname = usePathname();
+  const search = useSearch();
+  const settings = useSettings();
   const isMobile = useMediaQuery("(max-width: 768px)");
   const createDocument = useMutation(api.documents.create);
 
@@ -151,8 +155,8 @@ export default function Navigation() {
         </div>
         <div>
           <UserItem />
-          <Item label="Search" icon={Search} isSearch onClick={() => {}} />
-          <Item label="Settings" icon={Settings} onClick={() => {}} />
+          <Item label="Search" icon={Search} isSearch onClick={search.onOpen} />
+          <Item label="Settings" icon={Settings} onClick={settings.onOpen} />
         </div>
 
         <div className="mt-4">
