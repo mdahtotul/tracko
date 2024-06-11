@@ -2,6 +2,7 @@
 
 import { api } from "@/convex/_generated/api";
 import { Doc } from "@/convex/_generated/dataModel";
+import { useCoverImage } from "@/hooks/useCoverImage";
 import { useMutation } from "convex/react";
 import { ImageIcon, SmileIcon, XIcon } from "lucide-react";
 import { ElementRef, useRef, useState } from "react";
@@ -15,6 +16,7 @@ interface ToolbarProps {
 }
 
 export default function Toolbar({ initialData, preview }: ToolbarProps) {
+  const coverImage = useCoverImage();
   const inputRef = useRef<ElementRef<"textarea">>(null);
   const [isEditing, setIsEditing] = useState(false);
   const [value, setValue] = useState(initialData?.title);
@@ -107,7 +109,7 @@ export default function Toolbar({ initialData, preview }: ToolbarProps) {
             className="text-muted-foreground text-xs"
             variant={"outline"}
             size={"sm"}
-            onClick={() => {}}
+            onClick={coverImage.onOpen}
           >
             <ImageIcon className="h-4 w-4 mr-2" /> Add cover
           </Button>
