@@ -1,7 +1,11 @@
 "use client";
 
+import { api } from "@/convex/_generated/api";
 import { Doc } from "@/convex/_generated/dataModel";
-import { SmileIcon, XIcon } from "lucide-react";
+import { useMutation } from "convex/react";
+import { ImageIcon, SmileIcon, XIcon } from "lucide-react";
+import { ElementRef, useRef, useState } from "react";
+import TextareaAutoSize from "react-textarea-autosize";
 import { Button } from "../ui/button";
 import IconPicker from "./IconPicker";
 
@@ -11,11 +15,62 @@ interface ToolbarProps {
 }
 
 export default function Toolbar({ initialData, preview }: ToolbarProps) {
+  const inputRef = useRef<ElementRef<"textarea">>(null);
+  const [isEditing, setIsEditing] = useState(false);
+  const [value, setValue] = useState(initialData?.title);
+
+  const update = useMutation(api.documents.updateDocument);
+  const removeIcon = useMutation(api.documents.removeIcon);
+
+  const enableInput = () => {
+    if (preview) return;
+    setIsEditing(true);
+
+    setTimeout(() => {
+      setValue(initialData?.title);
+      inputRef.current?.focus();
+    }, 0);
+  };
+
+  const disableInput = () => {
+    setIsEditing(false);
+  };
+
+  const onInput = (value: string) => {
+    setValue(value);
+
+    const promise = update({
+      id: initialData._id,
+      title: value || "Untitled",
+    });
+  };
+
+  const onKeyDown = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+
+      disableInput();
+    }
+  };
+
+  const onIconSelect = (icon: string) => {
+    update({
+      id: initialData._id,
+      icon: icon,
+    });
+  };
+
+  const onRemoveIcon = () => {
+    removeIcon({
+      id: initialData._id,
+    });
+  };
+
   return (
     <div className="pl-[54px] group relative">
       {!!initialData?.icon && !preview && (
         <div className="flex items-center gap-x-2 group/icon pt-6">
-          <IconPicker onChange={() => {}}>
+          <IconPicker onChange={onIconSelect}>
             <p className="text-6xl hover:opacity-75 transition">
               {initialData?.icon}
             </p>
@@ -24,6 +79,7 @@ export default function Toolbar({ initialData, preview }: ToolbarProps) {
             className="rounded-full opacity-0 group-hover/icon:opacity-100 transition text-muted-foreground text-xs"
             variant={"outline"}
             size={"icon"}
+            onClick={onRemoveIcon}
           >
             <XIcon className="h-4 w-4" />{" "}
           </Button>
@@ -35,7 +91,7 @@ export default function Toolbar({ initialData, preview }: ToolbarProps) {
 
       <div className="opacity-0 group-hover:opacity-100 flex items-center gap-x-1 py-4">
         {!initialData?.icon && !preview && (
-          <IconPicker asChild onChange={() => {}}>
+          <IconPicker asChild onChange={onIconSelect}>
             <Button
               className="text-muted-foreground text-xs"
               variant={"outline"}
@@ -45,7 +101,35 @@ export default function Toolbar({ initialData, preview }: ToolbarProps) {
             </Button>
           </IconPicker>
         )}
+
+        {!initialData?.coverImage && !preview && (
+          <Button
+            className="text-muted-foreground text-xs"
+            variant={"outline"}
+            size={"sm"}
+            onClick={() => {}}
+          >
+            <ImageIcon className="h-4 w-4 mr-2" /> Add cover
+          </Button>
+        )}
       </div>
+      {isEditing && !preview ? (
+        <TextareaAutoSize
+          ref={inputRef}
+          value={value}
+          onChange={(e) => onInput(e.target.value)}
+          onBlur={disableInput}
+          onKeyDown={onKeyDown}
+          className="text-5xl bg-transparent font-bold break-words outline-none text-[#3f3f3f] dark:text-[#cfcfcf] resize-none"
+        />
+      ) : (
+        <div
+          onClick={enableInput}
+          className="pb-[11.5px] text-5xl font-bold break-words outline-none text-[#3f3f3f] dark:text-[#cfcfcf]"
+        >
+          {initialData?.title}
+        </div>
+      )}
     </div>
   );
 }
