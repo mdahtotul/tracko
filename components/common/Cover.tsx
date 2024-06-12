@@ -10,6 +10,7 @@ import { ImageIcon, XIcon } from "lucide-react";
 import Image from "next/image";
 import { useParams } from "next/navigation";
 import { Button } from "../ui/button";
+import { Skeleton } from "../ui/skeleton";
 
 interface CoverProps {
   url?: string;
@@ -66,3 +67,7 @@ export default function Cover({ url, preview }: CoverProps) {
     </div>
   );
 }
+
+Cover.Skeleton = function CoverSkeleton() {
+  return <Skeleton className="w-full h-[12vh]" />;
+};
