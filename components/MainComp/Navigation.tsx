@@ -13,7 +13,7 @@ import {
   Settings,
   Trash,
 } from "lucide-react";
-import { useParams, usePathname } from "next/navigation";
+import { useParams, usePathname, useRouter } from "next/navigation";
 import {
   ElementRef,
   MouseEvent as ReactMouseEvent,
@@ -24,11 +24,11 @@ import {
 import { toast } from "sonner";
 import { useMediaQuery } from "usehooks-ts";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
+import DocumentDetailNavbar from "./DocumentDetailNavbar";
 import DocumentList from "./DocumentList";
 import Item from "./Item";
 import TrashBox from "./TrashBox";
 import UserItem from "./UserItem";
-import DocumentDetailNavbar from "./DocumentDetailNavbar";
 
 export default function Navigation() {
   const search = useSearch();
@@ -122,10 +122,12 @@ export default function Navigation() {
       }, 300);
     }
   };
-
+  const router = useRouter();
   const handleCreateNote = async () => {
     const promise = createDocument({
       title: "Untitled",
+    }).then((docId) => {
+      router.push(`/documents/${docId}`);
     });
 
     toast.promise(promise, {

@@ -76,7 +76,7 @@ export default function DocumentList({
             label={doc?.title}
             icon={FileIcon}
             documentIcon={doc?.icon}
-            active={doc?._id === params.id}
+            active={doc?._id === params.documentId}
             level={level}
             onExpand={() => onExpand(doc?._id)}
             expanded={expanded[doc?._id] || false}

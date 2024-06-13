@@ -5,15 +5,19 @@ import { useUser } from "@clerk/clerk-react";
 import { useMutation } from "convex/react";
 import { PlusCircle } from "lucide-react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 
 export default function DocumentsPage() {
   const { user } = useUser();
+  const router = useRouter();
   const create = useMutation(api.documents.create);
 
   const onCreate = async () => {
     const promise = create({
       title: "Untitled",
+    }).then((docId) => {
+      router.push(`/documents/${docId}`);
     });
 
     toast.promise(promise, {

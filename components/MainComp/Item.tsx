@@ -63,7 +63,9 @@ export default function Item({
   const onArchive = (event: ReactMouseEvent<HTMLDivElement, MouseEvent>) => {
     event.stopPropagation();
     if (!id) return;
-    const promise = archive({ id });
+    const promise = archive({ id }).then(() => {
+      router.push("/documents");
+    });
 
     toast.promise(promise, {
       loading: "Moving to trash...",
@@ -84,7 +86,7 @@ export default function Item({
         onExpand?.();
       }
 
-      // router.push(`/documents/${docId}`);
+      router.push(`/documents/${docId}`);
     });
 
     toast.promise(promise, {

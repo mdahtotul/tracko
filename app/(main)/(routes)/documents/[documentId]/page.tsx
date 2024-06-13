@@ -1,12 +1,13 @@
 "use client";
 
 import Cover from "@/components/common/Cover";
-import RichTextEditor from "@/components/common/RichTextEditor";
 import Toolbar from "@/components/common/Toolbar";
 import { Skeleton } from "@/components/ui/skeleton";
 import { api } from "@/convex/_generated/api";
 import { Id } from "@/convex/_generated/dataModel";
 import { useMutation, useQuery } from "convex/react";
+import dynamic from "next/dynamic";
+import { useMemo } from "react";
 
 interface DocumentDetailPageProps {
   params: { documentId: Id<"documents"> };
@@ -15,6 +16,13 @@ interface DocumentDetailPageProps {
 export default function DocumentDetailPage({
   params: { documentId },
 }: DocumentDetailPageProps) {
+  const RichTextEditor = useMemo(
+    () =>
+      dynamic(() => import("@/components/common/RichTextEditor"), {
+        ssr: false,
+      }),
+    []
+  );
   const document = useQuery(api.documents.getDocumentById, {
     documentId,
   });
