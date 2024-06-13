@@ -654,10 +654,10 @@
   dependencies:
     regenerator-runtime "^0.14.0"
 
-"@blocknote/core@^0.14.0":
-  version "0.14.0"
-  resolved "https://registry.yarnpkg.com/@blocknote/core/-/core-0.14.0.tgz#608bd8b42d64a0f47bc53fa2fbcc4f75f39451b7"
-  integrity sha512-qtCD2Wq4AGyMMceoVCiKAihEjpCQUyvOc8xJyfkDCxc8b4G+liF10wkrCa7WYVLVUuYxK76F6eIUqdfCyPEdiQ==
+"@blocknote/core@^0.14.1":
+  version "0.14.1"
+  resolved "https://registry.yarnpkg.com/@blocknote/core/-/core-0.14.1.tgz#2c7fd16f7917fd2ab114b411d7aed375ae1a709b"
+  integrity sha512-VUrbGiARmKhSorLpXYee0VIhtVO3T3KxJM04UvIC2UwzW+J1z9LAShR5EYAfKHFbgPPqZ5y6gcH29Yu9pSeNgw==
   dependencies:
     "@tiptap/core" "^2.4.0"
     "@tiptap/extension-bold" "^2.4.0"
@@ -699,12 +699,27 @@
     y-protocols "^1.0.6"
     yjs "^13.6.15"
 
-"@blocknote/react@^0.14.0":
-  version "0.14.0"
-  resolved "https://registry.yarnpkg.com/@blocknote/react/-/react-0.14.0.tgz#eb1c07e9a4f28b11ca517281d267adf3507b7b72"
-  integrity sha512-18B/ou/ibRzemN4ZsBi4VsmG6CU3e+bUqcyady/CUJSXLhRMG5EBmt8wu0LrTe6VnhkTmuQA5zc+04Q/rwImbA==
+"@blocknote/mantine@^0.14.1":
+  version "0.14.1"
+  resolved "https://registry.yarnpkg.com/@blocknote/mantine/-/mantine-0.14.1.tgz#4e21af7fbab02eb242b5a798dda54fadb7c74ffe"
+  integrity sha512-tCwWHaxWbBsfpZ8SaghoPrOF47UyK/0zxx1JyH8D/OCsfGP3dFJE0Hb0bLxJQ/eLMMQoigb2uulklcrkije+4Q==
   dependencies:
-    "@blocknote/core" "^0.14.0"
+    "@blocknote/core" "^0.14.1"
+    "@blocknote/react" "^0.14.1"
+    "@mantine/core" "^7.10.1"
+    "@mantine/hooks" "^7.10.1"
+    "@mantine/utils" "^6.0.21"
+    react "^18"
+    react-dom "^18"
+    react-icons "^5.2.1"
+    use-prefers-color-scheme "^1.1.3"
+
+"@blocknote/react@^0.14.1":
+  version "0.14.1"
+  resolved "https://registry.yarnpkg.com/@blocknote/react/-/react-0.14.1.tgz#fca0cb34dac9f8f97b20096f72076e37aedd78a2"
+  integrity sha512-Wj4fNkDhtBmvtkGixzF8qesJMKGkrNWx3WGgg2WEyVusjhwx7DwatVmU92dvQ3rbz+VZDkrXZFKtcgxo3dMOFw==
+  dependencies:
+    "@blocknote/core" "^0.14.1"
     "@floating-ui/react" "^0.26.4"
     "@tiptap/core" "^2.4.0"
     "@tiptap/react" "^2.4.0"
@@ -967,6 +982,15 @@
     "@floating-ui/utils" "^0.2.0"
     tabbable "^6.0.0"
 
+"@floating-ui/react@^0.26.9":
+  version "0.26.17"
+  resolved "https://registry.yarnpkg.com/@floating-ui/react/-/react-0.26.17.tgz#efa2e1a0dea3d9d308965c5ccd49756bb64a883d"
+  integrity sha512-ESD+jYWwqwVzaIgIhExrArdsCL1rOAzryG/Sjlu8yaD3Mtqi3uVyhbE2V7jD58Mo52qbzKz2eUY/Xgh5I86FCQ==
+  dependencies:
+    "@floating-ui/react-dom" "^2.1.0"
+    "@floating-ui/utils" "^0.2.0"
+    tabbable "^6.0.0"
+
 "@floating-ui/utils@^0.2.0":
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/@floating-ui/utils/-/utils-0.2.2.tgz#d8bae93ac8b815b2bd7a98078cf91e2724ef11e5"
@@ -1034,6 +1058,28 @@
   dependencies:
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
+
+"@mantine/core@^7.10.1":
+  version "7.10.1"
+  resolved "https://registry.yarnpkg.com/@mantine/core/-/core-7.10.1.tgz#c90a2aed1e47ece38f745db11c1cff56fd5719b9"
+  integrity sha512-l9ypojKN3PjwO1CSLIsqxi7mA25+7w+xc71Q+JuCCREI0tuGwkZsKbIOpuTATIJOjPh8ycLiW7QxX1LYsRTq6w==
+  dependencies:
+    "@floating-ui/react" "^0.26.9"
+    clsx "^2.1.1"
+    react-number-format "^5.3.1"
+    react-remove-scroll "^2.5.7"
+    react-textarea-autosize "8.5.3"
+    type-fest "^4.12.0"
+
+"@mantine/hooks@^7.10.1":
+  version "7.10.1"
+  resolved "https://registry.yarnpkg.com/@mantine/hooks/-/hooks-7.10.1.tgz#68d12570f0dad127555904973ec78ae40065ae31"
+  integrity sha512-0EH9WBWUdtQLGU3Ak+csQ77EtUxI6pPNfwZdRJQWcaA3f8SFOLo9h9CGxiikFExerhvuCeUlaTf3s+TB9Op/rw==
+
+"@mantine/utils@^6.0.21":
+  version "6.0.21"
+  resolved "https://registry.yarnpkg.com/@mantine/utils/-/utils-6.0.21.tgz#6185506e91cba3e308aaa8ea9ababc8e767995d6"
+  integrity sha512-33RVDRop5jiWFao3HKd3Yp7A9mEq4HAJxJPTuYm1NkdqX6aTKOQK7wT8v8itVodBp+sb4cJK6ZVdD1UurK/txQ==
 
 "@next/env@14.2.3":
   version "14.2.3"
@@ -4991,7 +5037,7 @@ prettier@3.2.5:
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-3.2.5.tgz#e52bc3090586e824964a8813b09aba6233b28368"
   integrity sha512-3/GWa9aOC0YeD7LUfvOG2NiDyhOWRvt1k+rcKhOuYnMY24iiCphgneUfJDyFXd6rZCAnuLBv6UeAULtrhT/F4A==
 
-prop-types@^15.8.1:
+prop-types@^15.7.2, prop-types@^15.8.1:
   version "15.8.1"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.8.1.tgz#67d87bf1a694f48435cf332c24af10214a3140b5"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
@@ -5200,7 +5246,14 @@ react-is@^16.13.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
-react-remove-scroll-bar@^2.3.3:
+react-number-format@^5.3.1:
+  version "5.4.0"
+  resolved "https://registry.yarnpkg.com/react-number-format/-/react-number-format-5.4.0.tgz#8c1e97add1970d1a2f372ca286bcdaa49632ba5c"
+  integrity sha512-NWdICrqLhI7rAS8yUeLVd6Wr4cN7UjJ9IBTS0f/a9i7UB4x4Ti70kGnksBtZ7o4Z7YRbvCMMR/jQmkoOBa/4fg==
+  dependencies:
+    prop-types "^15.7.2"
+
+react-remove-scroll-bar@^2.3.3, react-remove-scroll-bar@^2.3.6:
   version "2.3.6"
   resolved "https://registry.yarnpkg.com/react-remove-scroll-bar/-/react-remove-scroll-bar-2.3.6.tgz#3e585e9d163be84a010180b18721e851ac81a29c"
   integrity sha512-DtSYaao4mBmX+HDo5YWYdBWQwYIQQshUV/dVxFxK+KM26Wjwp1gZ6rv6OC3oujI6Bfu6Xyg3TwK533AQutsn/g==
@@ -5219,6 +5272,17 @@ react-remove-scroll@2.5.5:
     use-callback-ref "^1.3.0"
     use-sidecar "^1.1.2"
 
+react-remove-scroll@^2.5.7:
+  version "2.5.10"
+  resolved "https://registry.yarnpkg.com/react-remove-scroll/-/react-remove-scroll-2.5.10.tgz#5fae456a23962af6d3c38ca1978bcfe0806c4061"
+  integrity sha512-m3zvBRANPBw3qxVVjEIPEQinkcwlFZ4qyomuWVpNJdv4c6MvHfXV0C3L9Jx5rr3HeBHKNRX+1jreB5QloDIJjA==
+  dependencies:
+    react-remove-scroll-bar "^2.3.6"
+    react-style-singleton "^2.2.1"
+    tslib "^2.1.0"
+    use-callback-ref "^1.3.0"
+    use-sidecar "^1.1.2"
+
 react-style-singleton@^2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/react-style-singleton/-/react-style-singleton-2.2.1.tgz#f99e420492b2d8f34d38308ff660b60d0b1205b4"
@@ -5228,7 +5292,7 @@ react-style-singleton@^2.2.1:
     invariant "^2.2.4"
     tslib "^2.0.0"
 
-react-textarea-autosize@^8.5.3:
+react-textarea-autosize@8.5.3, react-textarea-autosize@^8.5.3:
   version "8.5.3"
   resolved "https://registry.yarnpkg.com/react-textarea-autosize/-/react-textarea-autosize-8.5.3.tgz#d1e9fe760178413891484847d3378706052dd409"
   integrity sha512-XT1024o2pqCuZSuBt9FwHlaDeNtVrtCXu0Rnz88t1jUGheCLa3PhjE1GH8Ctm2axEtvdCl5SUHYschyQ0L5QHQ==
@@ -5883,6 +5947,11 @@ type-fest@^2.5.2:
   version "2.19.0"
   resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-2.19.0.tgz#88068015bb33036a598b952e55e9311a60fd3a9b"
   integrity sha512-RAH822pAdBgcNMAfWnCBU3CFZcfZ/i1eZjwFU/dsLKumyuuP3niueg2UAukXYF0E2AAoc82ZSSf9J0WQBinzHA==
+
+type-fest@^4.12.0:
+  version "4.20.0"
+  resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-4.20.0.tgz#019becf5a97cd58eee93f592f0961859a74482a7"
+  integrity sha512-MBh+PHUHHisjXf4tlx0CFWoMdjx8zCMLJHOjnV1prABYZFHqtFOyauCIK2/7w4oIfwkF8iNhLtnJEfVY2vn3iw==
 
 typed-array-buffer@^1.0.2:
   version "1.0.2"

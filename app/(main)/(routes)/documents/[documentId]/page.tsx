@@ -1,11 +1,12 @@
 "use client";
 
 import Cover from "@/components/common/Cover";
+import RichTextEditor from "@/components/common/RichTextEditor";
 import Toolbar from "@/components/common/Toolbar";
 import { Skeleton } from "@/components/ui/skeleton";
 import { api } from "@/convex/_generated/api";
 import { Id } from "@/convex/_generated/dataModel";
-import { useQuery } from "convex/react";
+import { useMutation, useQuery } from "convex/react";
 
 interface DocumentDetailPageProps {
   params: { documentId: Id<"documents"> };
@@ -17,6 +18,15 @@ export default function DocumentDetailPage({
   const document = useQuery(api.documents.getDocumentById, {
     documentId,
   });
+
+  const update = useMutation(api.documents.updateDocument);
+
+  const onChange = (content: string) => {
+    update({
+      id: documentId as Id<"documents">,
+      content,
+    });
+  };
 
   if (document === undefined) {
     return (
@@ -42,6 +52,7 @@ export default function DocumentDetailPage({
       <Cover url={document?.coverImage} />
       <div className="md:max-w-3xl lg:max-w-4xl mx-auto">
         <Toolbar initialData={document} />
+        <RichTextEditor onChange={onChange} initialContent={document.content} />
       </div>
     </div>
   );
