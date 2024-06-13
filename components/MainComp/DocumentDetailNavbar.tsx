@@ -8,6 +8,7 @@ import { useParams } from "next/navigation";
 import DocumentDetailBanner from "./DocumentDetailBanner";
 import DocumentDetailTitle from "./DocumentDetailTitle";
 import Menu from "./Menu";
+import PublishDocument from "./PublishDocument";
 
 interface DocumentDetailNavbarProps {
   isCollapsed: boolean;
@@ -51,6 +52,7 @@ export default function DocumentDetailNavbar({
         <div className="flex items-center justify-between w-full">
           <DocumentDetailTitle initialData={document} />
           <div className="flex items-center gap-x-2">
+            <PublishDocument initialData={document} />
             <Menu documentId={document._id} />
           </div>
         </div>
